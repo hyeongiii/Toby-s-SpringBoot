@@ -41,7 +41,7 @@ public class HellobootApplication_v3 {
                         resp.setStatus(HttpStatus.NOT_FOUND.value());
                     }
                 }
-            });
+            }).addMapping("/*");
         });
     }
 }
