@@ -3,7 +3,6 @@ package tobyspring.helloboot;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class HellobootApplication {
+// servlet 컨테이너에 Front Controller 서블릿을 생성하여 모든 요청의 중앙 처리를 담당한다.
+public class HellobootApplication_v1 {
 
 	public static void main(String[] args) {
 		// 톰캣 서블릿 웹서버의 설정 및 생성을 도와주는 클래스
@@ -35,8 +35,9 @@ public class HellobootApplication {
 						// frontController 가 아닌 helloServletController 의 hello 메서드에 작업을 위임
 						String ret = helloServletController.hello(name);
 
-						resp.setStatus(HttpStatus.OK.value());		// 하드코딩(직접 작성)보다는 spring이 제공하는 ENUM으로!
-						resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+//						resp.setStatus(HttpStatus.OK.value());		// 하드코딩(직접 작성)보다는 spring 이 제공하는 ENUM 으로! , 'status'를 지정하지 않으면 자동으로 200 OK 반환
+//						resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+						resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
 						resp.getWriter().print(ret);
 					}
 					else if (req.getRequestURI().equals("/user")) {
