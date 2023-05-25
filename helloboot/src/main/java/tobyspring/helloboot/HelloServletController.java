@@ -2,11 +2,13 @@ package tobyspring.helloboot;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
 @RequestMapping
+//@Component      // spring container 에 들어가는 component 임을 선언
+@RestController     // @Controller 와 @ResponseBody 를 메타 애노테이션으로 가지고 있음
 public class HelloServletController {
     private final HelloService helloService;
 
@@ -29,7 +31,7 @@ public class HelloServletController {
      */
 
     @GetMapping("/hello")
-    @ResponseBody
+//    @ResponseBody
     public String hello(String name) {
         // Controller 가 직접 Service 객체 생성
 //        SimpleHelloService helloService = new SimpleHelloService();
