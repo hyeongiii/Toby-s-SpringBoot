@@ -43,5 +43,7 @@ public class HellobootApplication_v3 {
                 }
             }).addMapping("/*");
         });
+        // 톰캣 서블릿 컨테이너 동작
+        webServer.start();
     }
 }

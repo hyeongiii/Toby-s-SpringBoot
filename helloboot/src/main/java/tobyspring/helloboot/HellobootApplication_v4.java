@@ -21,5 +21,7 @@ public class HellobootApplication_v4 {
                     new DispatcherServlet(applicationContext)
             ).addMapping("/*");
         });
+        // 톰캣 서블릿 컨테이너 동작
+        webServer.start();
     }
 }
