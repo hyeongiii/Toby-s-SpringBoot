@@ -1,9 +1,14 @@
 package tobyspring.helloboot;
 
+import java.util.Objects;
+
 public class HelloServletController {
 
     public String hello(String name) {
-        return "Hello " + name;
+        SimpleHelloService helloService = new SimpleHelloService();
+
+        // Objects.requireNonNull() : 매개변수로 넘겨준 객체가 NULL 일 경우, 예외를 던진다. (Null 인 경우를 방지하고, 아닐 경우 코드의 동작이 이어진다.)
+        return helloService.sayHello(Objects.requireNonNull(name));
     }
 }
 /*
